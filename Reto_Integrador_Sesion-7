@@ -1,0 +1,129 @@
+#seguimiento al Mantenimiento vehiculos
+
+# Reto 7 - Control de mantenimiento preventivo de una flota
+
+# Lista de diccionarios: cada diccionario es un vehículo con su código y sus km.
+
+#  Preparar los datos
+flota = [
+    {"codigo": "V-101", "km": 320},
+    {"codigo": "V-102", "km": 780},
+    {"codigo": "V-103", "km": 1250},
+    {"codigo": "V-104", "km": 1680},
+    {"codigo": "V-105", "km": 450},
+    {"codigo": "V-106", "km": 920},
+    {"codigo": "V-107", "km": 1420},
+    {"codigo": "V-108", "km": 1850},
+    {"codigo": "V-109", "km": 610},
+    {"codigo": "V-110", "km": 1100},
+    {"codigo": "V-111", "km": 250},
+    {"codigo": "V-112", "km": 1550},
+]
+
+# Contadores (uno por categoría) y acumulador
+uso_reciente = 0
+seguimiento = 0
+programar_revision = 0
+prioridad_alta = 0
+km_total = 0
+
+print("CLASIFICACIÓN DE LA FLOTA")
+print("-" * 45)
+
+#  Recorrer los registros con for
+for vehiculo in flota:
+    codigo = vehiculo["codigo"]
+    km = vehiculo["km"]
+
+    # Clasificar con if / elif / else
+    if km < 500:
+        categoria = "Uso reciente"
+        uso_reciente += 1  
+
+        #  Contar por intervalo
+    elif km < 1000:
+        categoria = "Seguimiento"
+        seguimiento += 1
+    elif km < 1500:
+        categoria = "Programar revisión"
+        programar_revision += 1
+    else:
+        categoria = "Prioridad alta"
+        prioridad_alta += 1
+
+    km_total += km                   # Acumular kilómetros
+
+    print(f"{codigo} | {km:>5} km | {categoria}")
+
+# Promedio
+total_vehiculos = len(flota)
+promedio = km_total / total_vehiculos
+
+#  Reporte final
+print("\nRESUMEN POR INTERVALO")
+print("-" * 45)
+print("Uso reciente (0-499 km):         ", uso_reciente)
+print("Seguimiento (500-999 km):        ", seguimiento)
+print("Programar revisión (1000-1499):  ", programar_revision)
+print("Prioridad alta (1500-1999 km):   ", prioridad_alta)
+
+print("\nINDICADORES")
+print("-" * 45)
+print("Total de vehículos:", total_vehiculos)
+print("Kilometraje acumulado:", km_total, "km")
+print(f"Kilometraje promedio: {promedio:.1f} km")
+
+#  (while). Consulta adicional por código de vehículo
+print("\nCONSULTA DE VEHÍCULOS")
+continuar = "s"
+
+while continuar == "s":
+    buscado = input("Escriba el código del vehículo (ej. V-104): ").strip().upper()
+    encontrado = False
+
+    for vehiculo in flota:
+        if vehiculo["codigo"] == buscado:
+            km = vehiculo["km"]
+            if km < 500:
+                categoria = "Uso reciente"
+            elif km < 1000:
+                categoria = "Seguimiento"
+            elif km < 1500:
+                categoria = "Programar revisión"
+            else:
+                categoria = "Prioridad alta"
+            print(f"{buscado}: {km} km -> {categoria}")
+            encontrado = True
+
+    if not encontrado:
+        print("Vehículo no encontrado.")
+
+    continuar = input("¿Desea hacer otra consulta? (s/n): ").strip().lower()
+
+print("Consulta finalizada.")
+
+
+# PREGUNTAS DE INTERPRETACIÓN
+#
+# 1. ¿En qué intervalo hay más vehículos?
+#    Hay un empate: cada intervalo tiene 3 vehículos, así que la flota
+#    está repartida de forma pareja y ningún intervalo domina.
+#
+# 2. ¿Cuántos vehículos están en "Programar revisión" y "Prioridad alta"?
+#    3 en "Programar revisión" (V-103, V-107, V-110) y 3 en "Prioridad alta"
+#    (V-104, V-108, V-112). En total son 6, la mitad de la flota.
+#
+# 3. ¿Qué representa el kilometraje promedio?
+#    Es el kilometraje típico de un vehículo desde su último mantenimiento:
+#    12.180 km entre 12 vehículos = 1.015 km. Resume la flota en un solo
+#    número.
+#
+# 4. ¿Por qué el promedio solo no basta para decidir?
+#    Porque mezcla todo: un vehículo con 250 km compensa a otro con 1.850 km.
+#    El promedio (1.015 km) parece normal, pero hay 3 vehículos en prioridad
+#    alta. Hay que mirar cada vehículo y su categoría.
+#
+# 5. ¿Cómo se representaría con un histograma?
+#    Con un eje horizontal con los 4 intervalos (0-499, 500-999, 1000-1499,
+#    1500-1999) y un eje vertical con la cantidad de vehículos. Cada barra
+#    sería de altura 3. Se podría hacer con matplotlib (plt.hist o plt.bar).

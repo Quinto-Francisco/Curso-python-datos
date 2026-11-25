@@ -1,0 +1,18 @@
+##sesion 3 
+##TIPOS DE DATOS
+
+##ENTEROS (INT)
+
+edad = 25
+cantidad = 2
+temperatura = -50
+
+primt 
+
+#flotantes (float)
+
+precio = 10.5
+pi = 3.1416
+peso = 25.3
+primt(edad, cantidad, temperatura, precio, pi, peso)
+

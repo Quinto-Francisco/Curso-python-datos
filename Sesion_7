@@ -1,0 +1,107 @@
+# #sesion 7
+# #ciclo for
+
+# guias = ["Guia 1", "Guia 2", "Guia 3", "Guia 4", "Guia 5"]
+
+# for memoria in guias:
+#     print("Revisando envio:", memoria)
+
+
+# #for+range
+# for consecutivo in range(2, 5):
+#     print("Revisando envio:", consecutivo)
+
+# for consecutivo in range(1, 10, 2):
+#     print("Revisando envio:", consecutivo)
+
+# #contador
+# contador = 0   
+
+# for guia in guias:
+#     contador += 1
+#     print("Revisando envio:", guia)
+
+# print("Total:", contador)
+
+# #distancias
+# distancias = [15, 22, 10, 18]
+
+# distancia_total = 0
+# for distancia in distancias:
+#     distancia_total += distancia
+
+# print("Distancia total:", distancia_total)
+
+# #ciclo while
+# #intentos de entrega
+
+# envios = [
+#     "estado: Entregado",
+#     "estado: En ruta",
+#     "estado: Devuelto",
+#     "estado: Entregado",
+#     "estado: Devuelto",
+#     "estado: Entregado",
+
+# ]
+# entregados = 0
+# en_ruta = 0
+# devueltos = 0   
+# for envio in envios:
+#     if envio == "estado: Entregado":
+#         entregados += 1
+#     elif envio == "estado: En ruta":
+#         en_ruta += 1
+#     elif envio == "estado: Devuelto":
+#         devueltos += 1
+
+# print("Resumen de envíos:")
+# print("Entregados:", entregados)
+# print("En ruta:", en_ruta)
+# print("Devueltos:", devueltos)
+
+# #while
+# #intentos de entrega
+
+# guia = "Guia 1"
+# intentos = 0
+# entregado = False
+# while intentos < 3 and entregado == False:
+#     intentos += 1
+#     print("guia:", guia)
+#     print("Intento de envío:", intentos)
+
+# resultado = input("¿Se entregó la guía? (si/no): ").lower()
+# if resultado == "si":
+#     entregado = True
+# else:
+#     entregado = False
+
+# if entregado:
+#     print("Envío entregado con éxito.")
+# else:
+#     print("Envio devuelto.")
+
+
+tiempos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ]
+
+grupo_1_3 = 0
+grupo_4_6 = 0
+grupo_7_9 = 0
+grupo_10_12 = 0
+
+for tiempo in tiempos:
+    if tiempo >= 1 and tiempo <= 3:
+        grupo_1_3 += 1
+    elif tiempo >= 4 and tiempo <= 6:
+        grupo_4_6 += 1
+    elif tiempo >= 7 and tiempo <= 9:
+        grupo_7_9 += 1
+    elif tiempo >= 10 and tiempo <= 12:
+        grupo_10_12 += 1
+
+print("Distribución de tiempos:")
+print("Grupo 1-3:", grupo_1_3)
+print("Grupo 4-6:", grupo_4_6)
+print("Grupo 7-9:", grupo_7_9)
+print("Grupo 10-12:", grupo_10_12)

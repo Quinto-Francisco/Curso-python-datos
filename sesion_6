@@ -1,0 +1,45 @@
+# #sesion 6
+
+# #if
+
+# cantidad_producto = 5
+# if cantidad_producto >= 2:
+#     print("stock está disponible")
+
+# #if/else
+# total_compra = 90000
+# if total_compra >= 100000:
+#     print("El envío es gratis")
+# else:
+#     print("El envío tiene un costo adicional")  
+
+# #educacion
+# nota = 2.5
+# if nota >= 3.5:
+#     print("El estudiante aprueba la materia")
+
+# elif nota >= 2.5:
+#     print("El estudiante debe presentar un examen de recuperación")
+
+# #marketing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+total_compra = 150000
+cliente_frecuente = True
+
+if total_compra >= 100000 and cliente_frecuente:
+    print("Descuento autorizado")
+else:
+    print("No cumple las condiciones")
